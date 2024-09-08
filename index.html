@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Tiles Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #5e503f; /* Faded dark brown for the page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        #gameContainer {
+            width: 600px; /* Wider game box */
+            height: 400px; /* Shorter game box */
+            background-color: #f5f5dc; /* Light beige game background */
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-around;
+            padding-top: 20px;
+        }
+
+        .tile {
+            width: 15%; /* Narrower tiles */
+            height: 200px; /* Longer tiles */
+            background-color: black;
+            position: absolute;
+            top: -200px;
+            transition: top 2s linear; /* Slower falling speed */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Click on two tiles to prove you're a human!</h1>
+        <div id="gameContainer"></div>
+    </div>
+
+    <script>
+        const gameContainer = document.getElementById('gameContainer');
+        let tileCount = 0;
+
+        function createTile() {
+            const tile = document.createElement('div');
+            tile.classList.add('tile');
+
+            // Random horizontal placement, with more spacing
+            const leftPosition = Math.random() * 80; 
+            tile.style.left = `${leftPosition}%`;
+
+            // Prevent tiles from clustering by ensuring some space between them
+            let lastTilePosition = gameContainer.querySelectorAll('.tile');
+            if (lastTilePosition.length > 0) {
+                let lastTile = lastTilePosition[lastTilePosition.length - 1];
+                if (Math.abs(parseFloat(lastTile.style.left) - leftPosition) < 10) {
+                    tile.style.left = `${(leftPosition + 20) % 80}%`;
+                }
+            }
+
+            gameContainer.appendChild(tile);
+
+            // Start the tile falling
+            setTimeout(() => {
+                tile.style.top = '400px';
+            }, 100);
+
+            // Tile click interaction
+            tile.addEventListener('click', () => {
+                tile.style.backgroundColor = 'grey'; // Mark tile as clicked
+                tile.removeEventListener('click', arguments.callee); // Disable further clicks
+                tileCount++;
+
+                if (tileCount >= 2) {
+                    setTimeout(() => {
+                        alert('You have successfully signed in!');
+                        window.location.href = 'success.html';
+                    }, 500);
+                }
+            });
+
+            // Remove the tile after it falls
+            setTimeout(() => {
+                tile.remove();
+                if (tileCount < 2) createTile(); // Keep creating new tiles until clicked
+            }, 5000); // Longer time before tile removal
+        }
+
+        setInterval(createTile, 2000); // Slower tile creation to match slower fall speed
+    </script>
+</body>
+</html>

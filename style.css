@@ -1,0 +1,48 @@
+/* Basic styling for the game */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #dfe6e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+h2 {
+    color: #2d3436;
+}
+
+#game-container {
+    position: relative;
+    width: 500px;  /* Widened the game area */
+    height: 400px; /* Shortened the height */
+    background-color: #b2bec3;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.tile {
+    position: absolute;
+    width: 150px; /* Widened the tiles to match the wider container */
+    height: 100px;
+    background-color: #000;
+    cursor: pointer;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    animation: fall 4s linear; /* Slowed down the animation speed */
+}
+
+@keyframes fall {
+    0% {
+        top: -100px;
+    }
+    100% {
+        top: 400px; /* Adjusted to match the shorter game height */
+    }
+}

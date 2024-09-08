@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    background-image: url('k.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.headerbg {
+    background: linear-gradient(to right, rgba(34, 31, 31, 1) 0%, rgba(34, 31, 31, 0.4) 100%);
+    width: 100%; /* Full width */
+    height: 60px; /* Increased navbar height */
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+.container1 {
+    max-width: 1200px; /* Sets a max-width for the content */
+    width: 100%; /* Full width */
+    margin: 2px; /* Centers the container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; /* Full height of the headerbg */
+    padding: 0 20px; /* Padding to ensure content is not flush with screen edges */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    margin: right;
+    align-items: right;
+    width: 100%;
+}
+
+.logo img {
+    height: 60px; /* Adjusted logo height */
+    width: 200px;
+}
+
+nav {
+    flex-grow: 1;
+    text-align: right; /* Aligns the nav items to the right */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; /* Ensures items are pushed to the right */
+    align-items: center; /* Center links vertically */
+    height: 100%;
+}
+
+nav ul li {
+    padding: 0px 30px; /* Increased horizontal padding for each nav item */
+}
+
+nav ul li a {
+    color: #fff; /* White text color */
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 10px; /* Line height to match the increased navbar height for vertical centering */
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: #FF0000; /* Red when hovered/focused */
+}
+
+form {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ff0000;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #ff0000;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: #cc0000;
+}
+
+h2 {
+    text-align: center;
+    color: #ff0000;
+}
